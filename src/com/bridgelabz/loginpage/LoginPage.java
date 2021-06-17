@@ -21,7 +21,7 @@ public class LoginPage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String user = request.getParameter("user");
 		String pwd = request.getParameter("pwd");
-		if(user.matches("[A-Z]{1}[a-z]{2,}")) {
+		if(user.matches("[A-Z]{1}[a-z]{2,}") && pwd.matches("^(?=.*[0-9])"+"(?=.*[a-z])(?=.*[A-Z])"+ "(?=.*[@\\-#$%^&+=])"+ "(?=\\S+$).{8,}$")) {
 			request.setAttribute("user", user);
 			request.getRequestDispatcher("LoginSuccess.jsp").forward(request, response);
 			
